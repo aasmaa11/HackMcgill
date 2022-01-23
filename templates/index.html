@@ -1,0 +1,107 @@
+<!doctype html>
+
+<head>
+   <title>Flask App</title>
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sora">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+</head>
+
+<body>
+
+
+
+   <div class="container">
+
+      <div class="sectionOne">
+         <h1>
+            <span> Discover </span>the meaning of <span>words</span> with <span>pictures!</span>
+
+         </h1>
+      </div>
+
+      <div class="sectionTwo">
+         <h3>Upload any png, jpg or jpeg file containing a word and see the meaning behind</h3>
+      </div>
+
+      <div class="sectionThree">
+         <form method="post" action="/" enctype="multipart/form-data">
+            <div>
+
+               <dl>
+                  <p>
+                  <div class="upload-wrapper">
+                     <button class="btn1">Upload</button>
+                     <input type="file" id="actual-btn" class="form-control" name="file" autocomplete="off" required>
+                     <span id="file-chosen">No file chosen</span>
+                  </div>
+
+
+                  </p>
+               </dl>
+
+            </div>
+            <div>
+
+               <p>
+                  <input type="submit" value="Submit" class="btn">
+               </p>
+
+            </div>
+
+         </form>
+      </div>
+
+      <div class="message">
+
+         <p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+         <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+         </ul>
+         {% endif %}
+         {% endwith %}
+         </p>
+         
+      </div>
+      
+
+   
+      {% if filename %}
+
+      <div class="sectionFour">
+         <img src="{{ url_for('display_image', filename=filename) }}" alt="">
+      
+      
+
+      
+         
+         <img src="{{ url_for('display_image', filename=web_image) }}" alt="">
+         
+         
+      </div>
+
+      
+      {% endif %}
+
+   </div>
+
+   <script>
+
+      const actualBtn = document.getElementById('actual-btn');
+
+      const fileChosen = document.getElementById('file-chosen');
+
+      actualBtn.addEventListener('change', function () {
+         fileChosen.textContent = this.files[0].name
+      })
+   </script>
+
+</body>
