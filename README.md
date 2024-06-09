@@ -14,5 +14,15 @@ On the left, the uploaded image; on the right, the Google image retrieved by the
 * Framework: Flask
 
 ## To run locally
+### Prerequesites
+* Flask: ```pip install Flask```
+* OpenCV: ```pip install opencv-python```
+* Pytesseract: ```pip install pytesseract```
+* Selenium: ```pip install selenium```
+* BeautifulSoup: ```pip install bs4```
+* Requests: ```pip install requests```
+* Pandas: ```pip install pandas```
 
+### Command line to run the app
+```python app.py```
 
